@@ -1,7 +1,7 @@
 <template>
-   <nav class="navbar navbar-expand-lg navbar-light bg-light pt-4 border-bottom bg-transparent border-dark shadow">
+   <nav class="navbar navbar-expand-lg navbar-light bg-light pt-4 mb-3 border-bottom bg-transparent border-dark shadow-sm">
   <div class="container">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" style="font-weight: bold; font-size: 26px;" href="#">Handy</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -28,14 +28,14 @@
           </ul>
         </li>
       </ul>
-      <button class="btn me-2 px-4 py-2" style="background-color: darkblue; color: white; font-size: 18px;" type="button">Get started</button>
+      <button class="btn me-2 px-4 py-2" type="button">Get started</button>
 
     </div>
   </div>
-</nav>
-  </template>
+  </nav>
+</template>
   
-  <script lang="ts">
+<script lang="ts">
   import { Options, Vue } from 'vue-class-component';
 
   @Options({
@@ -43,5 +43,12 @@
     },
   })
   export default class topNav extends Vue {}
-  </script>
+</script>
   
+<style scoped>
+button{
+  background-color: darkblue; 
+  color: white; 
+  font-size: 18px;
+}
+</style>
