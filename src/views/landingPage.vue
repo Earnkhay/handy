@@ -1,7 +1,6 @@
 <template>
     <top-nav></top-nav>
-    <testimonial/>
-
+ 
     <div>
       <div class="container">
         <div class="row">
@@ -34,6 +33,8 @@
         </div>
       </div>
     </div>
+    
+    <testimonial/>
 </template>
   
 <script lang="ts">

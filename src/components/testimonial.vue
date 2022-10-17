@@ -1,4 +1,6 @@
 <template>
+  <div class="my-4">
+  <h1 class="text-center text-primary mb-3">Customer Testimonials</h1>
     <carousel :items-to-show="2" :autoplay="2000" :breakpoints="breakpoints">
       <slide v-for="item in items" :key="item.id">
         <card :comment="item.comment" :name="item.name" :job="item.job"/>
@@ -8,6 +10,7 @@
         <pagination />
       </template>
     </carousel>
+    </div>
   </template>
   
 <script lang="ts">
