@@ -6,9 +6,9 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse " id="navbarSupportedContent">
-      <ul class="navbar-nav mb-2 mb-lg-0 ms-auto justify-content-end me-5" style="font-weight: bold;">
+      <ul class="navbar-nav mb-2 mb-lg-0 ms-auto me-5" style="font-weight: bold;">
         <li class="nav-item">
-          <a class="nav-link active px-3 link-dark" aria-current="page" href="#">Home</a>
+          <router-link class="nav-link px-3" active-class="text-primary" :to="{name: 'landingPage'}">Home</router-link>
         </li>
         <li class="nav-item">
           <a class="nav-link px-3 link-dark" href="#">About</a>
