@@ -56,4 +56,10 @@
     width: 50%;
 }
 
+@media (min-width:320px) {
+  .feature-desc {
+    width: 100%;
+  }
+}
+
 </style>
