@@ -3,8 +3,6 @@
     <benefits />
     <features/>
     <testimonial/>
-
-    
 </template>
   
 <script lang="ts">
