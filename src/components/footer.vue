@@ -6,6 +6,7 @@
               <h6 class="text-uppercase fw-bold mb-4">
                 <i class="fas fa-gem me-3"></i>
               </h6>
+              
               <p>
                 Join our newsletter to stay up to date on features and releases
               </p>
@@ -24,6 +25,7 @@
                     placeholder="Enter your email"
                   />
                 </div>
+
                 <button type="submit" class="btn btn-primary mb-2">
                   Subscribe
                 </button>
