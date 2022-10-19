@@ -5,8 +5,8 @@
             <p class="card-text">
                 {{ description}}
             </p>
-            <!-- <img class="" src="../../assets/benefit.jpg" alt="Card image cap"> -->
-            <img class="" :src="require(`@/assets/${image}`)"  alt="Card image cap" />
+            <img class="img-fluid" src="../../assets/benefit.jpg" alt="Card image cap" width="350">
+            <!-- <img class="" :src="require(`@/assets/${image}`)"  alt="Card image cap" /> -->
   </div>
 </div>
 
