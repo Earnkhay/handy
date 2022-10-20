@@ -3,6 +3,7 @@
     <benefits />
     <features/>
     <testimonial/>
+    <footer/>
 </template>
   
 <script lang="ts">
@@ -11,6 +12,7 @@
   import testimonial from '@/components/testimonial.vue'
   import benefits from '@/components/benefits.vue'
   import features from '@/components/features.vue'
+  import footer from '@/components/footer.vue'
  
 
   @Options({
@@ -18,7 +20,8 @@
       topNav,
       testimonial,
       benefits,
-      features
+      features,
+      footer
     },
   })
   export default class landingPage extends Vue {}
