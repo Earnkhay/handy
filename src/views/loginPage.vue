@@ -1,10 +1,10 @@
 <template>
     <top-nav/>
-    <div class="container">
+    <div class="container-fluid p-0">
         <div class="row gx-0">
             <div class="col-md-6 form mt-5">
                 <div class="text-center">
-                    <h2 id="header" class="mb-3 text-primary fw-bold">Login</h2>
+                    <h2 id="header" class="mb-3 mt-5 text-primary fw-bold">Login</h2>
                     <alert v-if="alertShow" :alertText="alertTitle" :alertType="alertType"></alert><br>
                 </div>
                 <div class="row justify-content-center ">
@@ -22,7 +22,7 @@
                                 </div>
                         
                             <div class="text-center mb-4">
-                            <button type="submit" id="login" @click.prevent="submitAction()" >Log In</button>
+                            <button type="submit" class="btn btn-primary" id="login" @click.prevent="submitAction()" >Log In</button>
                             </div>
                             </div>
 
@@ -35,13 +35,13 @@
                             <a href="#" class="text-dark">Forgot your Password?</a>
                             </div>
 
-                        <h5 id="account" class="text-center fw-bold">Don't have an account?<a href="" id="link" @click.prevent=""> Sign up</a></h5>
+                        <h5 id="account" class="text-center fw-bold">Don't have an account?<a href="" id="link" @click.prevent="" class="text-primary"> Sign up</a></h5>
                     </form>
-                   
                 </div>
             </div>
+
             <div class="col-md-6 d-none d-sm-block login-image">
-                <img src="../assets/loginimage.png" alt=""  >
+                <img src="../assets/loginimage.png" alt="">
             </div>
         </div>
     </div>  
@@ -156,10 +156,10 @@ img{
 
 form button{
     width: 100%;
-    background-color: blue;
+    /* background-color: blue; */
     padding: 10px;
     border-radius: 10px;
-    border-color:  blue;
+    /* border-color:  blue; */
     color: white;
 }
 
@@ -172,9 +172,13 @@ form button{
     border-radius: 10px;
 }
 
+.googleBtn:hover, .fbBtn:hover{
+    background-color: rgb(2, 117, 216);
+    color: white
+}
+
 h5 a{
     text-decoration: none;
-    color: blue;
 }
 
 form a:hover{
