@@ -1,5 +1,5 @@
 <template>
-   <nav class="navbar navbar-expand-lg navbar-light bg-light pt-4 mb-3 border-bottom bg-transparent border-dark shadow-sm">
+   <nav class="navbar navbar-expand-lg navbar-light bg-light pt-4 border-bottom bg-transparent border-dark shadow-sm">
   <div class="container">
     <a class="navbar-brand img-responsive" href="#"><img src="../assets/handylogo.png" class="img-responsive" alt=""></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +28,7 @@
           </ul>
         </li>
       </ul>
-      <button class="btn me-2 px-4 py-2" type="button">Get started</button>
+      <button class="btn me-2 px-4 py-2 btn-primary" type="button">Get started</button>
 
     </div>
   </div>
@@ -47,7 +47,6 @@
   
 <style scoped>
 button{
-  background-color: darkblue; 
   color: white; 
   font-size: 18px;
 }
