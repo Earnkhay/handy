@@ -1,12 +1,18 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import landingPage from '@/views/landingPage.vue'
 import notFoundPage from '@/views/notFoundPage.vue'
+import login from '@/views/loginPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'landingPage',
     component: landingPage
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: login
   },
   {
     path: "/404",

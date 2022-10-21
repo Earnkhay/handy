@@ -97,7 +97,7 @@ import { Options, Vue } from "vue-class-component";
   components: {},
   
 })
-export default class footer extends Vue {}
+export default class footerComp extends Vue {}
 </script>
 
 <style></style>
