@@ -8,16 +8,16 @@
     <div class="collapse navbar-collapse " id="navbarSupportedContent">
       <ul class="navbar-nav mb-2 mb-lg-0 ms-auto me-5" style="font-weight: bold;">
         <li class="nav-item">
-          <router-link class="nav-link px-3" active-class="text-primary" :to="{name: 'landingPage'}">Home</router-link>
+          <router-link class="nav-link px-3 link-dark" active-class="text-primary" :to="{name: 'landingPage'}">Home</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link px-3 link-dark" href="#">About</a>
+          <router-link class="nav-link px-3 link-dark" active-class="text-primary" :to="{name: 'login'}">About</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link px-3 link-dark" href="#">Pricing</a>
+          <a class="nav-link px-3 link-dark" active-class="text-primary" href="#">Pricing</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle px-3 link-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle px-3 link-dark" active-class="text-primary" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Features
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -49,5 +49,9 @@
 button{
   color: white; 
   font-size: 18px;
+}
+
+li a:hover{
+  color: red;
 }
 </style>

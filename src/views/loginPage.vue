@@ -4,7 +4,7 @@
         <div class="row gx-0">
             <div class="col-md-6 form mt-5">
                 <div class="text-center">
-                    <h2 id="header" class="mb-3 mt-5 text-primary fw-bold">Login</h2>
+                    <h2 id="header" class="mb-3 mt-3 text-primary fw-bold">Login</h2>
                     <alert v-if="alertShow" :alertText="alertTitle" :alertType="alertType"></alert><br>
                 </div>
                 <div class="row justify-content-center ">
@@ -21,8 +21,9 @@
                                   </div>
                                 </div>
                         
-                            <div class="text-center mb-4">
-                            <button type="submit" class="btn btn-primary" id="login" @click.prevent="submitAction()" >Log In</button>
+                            <div class="text-center mb-4 mainBtn">
+                            <!-- <button type="submit" class="btn btn-primary" id="login" @click.prevent="submitAction()" >Log In</button> -->
+                            <btn-comp :btnType="btnType1" :text="text2" :btnColor="btnColor2"></btn-comp>
                             </div>
                             </div>
 
@@ -31,11 +32,11 @@
                             <btn-comp :btnType="btnType" :text="text1" :btnColor="btnColor" class="fbBtn"></btn-comp>
                             </div>
 
-                            <div class="text-center mb-3 fs-6">
-                            <a href="#" class="text-dark">Forgot your Password?</a>
+                            <div class="text-center mb-3 fs-6 fg">
+                            <a href="#">Forgot your Password?</a>
                             </div>
 
-                        <h5 id="account" class="text-center fw-bold">Don't have an account?<a href="" id="link" @click.prevent="" class="text-primary"> Sign up</a></h5>
+                        <h5 id="account" class="text-center fw-bold">Don't have an account?<a href="" id="link" @click.prevent="" class="text-decoration-none"> Sign up</a></h5>
                     </form>
                 </div>
             </div>
@@ -68,9 +69,12 @@ import axios from 'axios'
         alertType = ""
         alertShow = false
         btnType = "button"
+        btnType1 = "submit"
         text = "Log in with Google"
         text1 = "Log in with Facebook"
+        text2 = "Log in"
         btnColor = "btn-transparent"
+        btnColor2 = "btn-primary"
         mailformat = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
         //To check a password between 6 to 20 characters which contain at least one numeric digit, 
         // one uppercase and one lowercase letter
@@ -151,17 +155,19 @@ import axios from 'axios'
 
 img{
     max-width: 100%;
-    height: auto;
+    height: 100%;
 }
 
-form button{
+.form{
+    padding: 30px;
+}
+
+/* form button{
     width: 100%;
-    /* background-color: blue; */
     padding: 10px;
     border-radius: 10px;
-    /* border-color:  blue; */
     color: white;
-}
+} */
 
 .emailLogin{
     border-bottom: solid 1px black;
@@ -170,18 +176,32 @@ form button{
 .googleBtn, .fbBtn{
     border: solid 1px black;
     border-radius: 10px;
+    max-width: 100%;
 }
 
 .googleBtn:hover, .fbBtn:hover{
     background-color: rgb(2, 117, 216);
-    color: white
+    color: white;
 }
 
-h5 a{
-    text-decoration: none;
+.mainBtn:hover{
+    color: red;
 }
 
-form a:hover{
+.fg a{
+    color: black;
+}
+
+.fg a:hover{
+    color: red;
+}
+
+
+/* #link{
+    color: rgb(2, 117, 216);
+} */
+
+h5 a:hover{
     color: red;
 }
 
@@ -193,4 +213,24 @@ form a:hover{
     margin-left: -30px; 
     margin-top: 10px;
 }
+
+@media (min-width: 400px) and (max-width: 767px) {
+    .login-image img{
+        display: none;
+    }
+
+    .form{
+        padding: 0 70px;
+    }
+}
+
+@media screen and (max-width: 399px){
+    .form{
+        padding: 0 30px;
+    }
+
+    h5{
+        font-size: 1rem;
+    }
+} 
 </style>
