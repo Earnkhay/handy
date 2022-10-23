@@ -1,23 +1,23 @@
 <template>
    <nav class="navbar navbar-expand-lg navbar-light bg-light pt-4 border-bottom bg-transparent border-dark shadow-sm">
   <div class="container">
-    <a class="navbar-brand img-responsive" href="#"><img src="../assets/handylogo.png" class="img-responsive" alt=""></a>
+    <router-link class="navbar-brand img-responsive" :to="{name: 'landingPage'}"><img src="../assets/handylogo.png" class="img-responsive" alt=""></router-link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse " id="navbarSupportedContent">
       <ul class="navbar-nav mb-2 mb-lg-0 ms-auto me-5" style="font-weight: bold;">
         <li class="nav-item">
-          <router-link class="nav-link px-3 link-dark" active-class="text-primary" :to="{name: 'landingPage'}">Home</router-link>
+          <router-link class="nav-link px-3" active-class="text-primary" :to="{name: 'landingPage'}">Home</router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link px-3 link-dark" active-class="text-primary" :to="{name: 'login'}">About</router-link>
+          <a class="nav-link px-3 link-dark" href="#">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link px-3 link-dark" active-class="text-primary" href="#">Pricing</a>
+          <a class="nav-link px-3 link-dark" href="#">Pricing</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle px-3 link-dark" active-class="text-primary" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle px-3 link-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Features
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -28,8 +28,8 @@
           </ul>
         </li>
       </ul>
-      <button class="btn me-2 px-4 py-2 btn-primary" type="button">Get started</button>
 
+        <router-link :to="{name: 'signup'}" class="text-decoration-none link-light btn me-2 px-4 py-2 bg-primary fs-5 navBtn">Get started</router-link>
     </div>
   </div>
   </nav>
@@ -46,12 +46,16 @@
 </script>
   
 <style scoped>
-button{
-  color: white; 
+/* button{
+  background-color: darkblue; 
   font-size: 18px;
+} */
+
+.btn.navBtn:hover{
+  color: red !important;
 }
 
-li a:hover{
-  color: red;
+.nav-link:hover{
+  color: red !important;
 }
 </style>

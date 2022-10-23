@@ -1,15 +1,24 @@
 <template>
-    <top-nav/>
-    <div class="container-fluid p-0">
-        <div class="row gx-0">
-            <div class="col-md-6 form mt-5">
-                <div class="text-center mb-4 mt-3 ">
-                    <h2 id="header" class="text-primary fw-bold">Login</h2>
-                </div>
+    <nav>
+        <div class="py-3 border-bottom border-dark shadow-sm">
+            <div class="container text-center">
+             <router-link class="navbar-brand img-responsive" :to="{name: 'landingPage'}"><img src="../assets/handylogo.png" class="img-responsive" alt=""></router-link>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class=" form mt-5">
+                <div class="text-center mb-3 mt-3">
+                    <h2 id="header" class="  text-primary fw-bold">Getting Started</h2>
+                    <h6>Create an account</h6>
+                </div>    
+                <div class="col-md-8 container">
                     <alert v-if="alertShow" :alertText="alertTitle" :alertType="alertType"></alert>
-                
-                <div class="row justify-content-center ">
-                        <form action="" id="login-form" class=" col-md-9 text-xs-center"> 
+                </div>
+
+                <div class="row justify-content-center mt-3">
+                        <form action="" id="login-form" class="col-md-5 text-xs-center"> 
                             <div class="border-bottom border-dark">  
                             <div class="mb-3 text-xs-center">
                                 <input type="email" class="form-control" id="email" placeholder="Email" v-model="email" @blur="validateEmail"  required>
@@ -17,13 +26,12 @@
                 
                             <div class="mb-3 text-xs-center">
                                 <div class="password-icon">
-                                  <input :type="passwordType" class="form-control password" id="inputPassword" placeholder="Password" v-model="password"  required>
+                                  <input :type="passwordType" class="form-control password" id="inputPassword" placeholder="Password" v-model="password" @blur="validatePassword"  required>
                                   <i class="fa-solid icon" :class="{'fa-eye': showEye, 'fa-eye-slash': !showEye}" id="togglePassword" @click="toggleVisibility"></i>
                                   </div>
                                 </div>
                         
                             <div class="text-center mb-4 mainBtn">
-                            <!-- <button type="submit" class="btn btn-primary" id="login" @click.prevent="submitAction()" >Log In</button> -->
                             <btn-comp :btnType="btnType1" :text="text2" :btnColor="btnColor2"></btn-comp>
                             </div>
                             </div>
@@ -37,16 +45,13 @@
                             <a href="#">Forgot your Password?</a>
                             </div>
 
-                        <h5 id="account" class="text-center fw-bold">Don't have an account?<router-link id="link" :to="{name: 'signup'}" class="text-decoration-none"> Sign up</router-link></h5>
+                        <h5 id="account" class="text-center fw-bold">Already a member?<router-link :to="{name: 'login'}" id="link" class="text-decoration-none"> Log in</router-link></h5>
                     </form>
                 </div>
             </div>
-
-            <div class="col-md-6 d-none d-sm-block login-image">
-                <img src="../assets/loginimage.png" alt="">
-            </div>
         </div>
-    </div>  
+    </div> 
+
 </template>
 
 <script lang="ts">
@@ -62,7 +67,7 @@ import axios from 'axios'
             btnComp,
         }
     })
-    export default class login extends Vue{
+    export default class signup extends Vue{
         passwordType = 'password'
         email = ""
         password = ""
@@ -71,9 +76,9 @@ import axios from 'axios'
         alertShow = false
         btnType = "button"
         btnType1 = "submit"
-        text = "Log in with Google"
-        text1 = "Log in with Facebook"
-        text2 = "Log in"
+        text = "Sign up with Google"
+        text1 = "Sign up with Facebook"
+        text2 = "Sign Up"
         btnColor = "btn-transparent"
         btnColor2 = "btn-primary"
         mailformat = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
@@ -112,20 +117,32 @@ import axios from 'axios'
                         },3000)
                     }
                 }
-            submitAction(){
-                console.log('hi');
-                
-            }
+            validatePassword() {
+                    if (this.regPassword.test(this.password)) {
+                        this.alertShow = false
+                    }else if(this.password == ""){
+                        this.alertTitle = "Please input Password"
+                        this.alertType = "Danger"
+                        this.alertShow = true
+                        setTimeout(
+                            () => {
+                                this.alertShow = false
+                        },3000)
+                        
+                    }else{
+                        this.alertTitle = "Password should be at least 6 characters long, contain at least one uppercase & one digit"
+                        this.alertType = "Danger"
+                        this.alertShow = true
+                        setTimeout(
+                            () => {
+                                this.password = ""
+                        },3000)
+                    }
+                }
     }
 </script>
 
 <style scoped>
-
-img{
-    max-width: 100%;
-    height: 100%;
-}
-
 .form{
     padding: 30px;
 }
@@ -142,7 +159,7 @@ img{
 }
 
 .mainBtn:hover{
-    color: red !important;
+    color: red;
 }
 
 .fg a{
@@ -171,23 +188,4 @@ h5 a:hover{
     margin-top: 10px;
 }
 
-@media (min-width: 400px) and (max-width: 767px) {
-    .login-image img{
-        display: none;
-    }
-
-    .form{
-        padding: 0 80px;
-    }
-}
-
-@media screen and (max-width: 399px){
-    .form{
-        padding: 0 30px;
-    }
-
-    h5{
-        font-size: 1rem;
-    }
-} 
 </style>
