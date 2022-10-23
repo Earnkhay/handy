@@ -1,6 +1,8 @@
 <template>
-    <div :class="[alertType == 'Success' ? 'bg-success' : 'bg-danger']" class="alertComp">
-        <p class="mt-1 mb-1"><span class="pe-2"><i class="fa-solid" :class="[alertType == 'Success' ? 'fa-circle-check' : 'fa-circle-exclamation']"></i></span>{{alertText}}</p>
+    <div class="container mb-3 col-md-9">
+    <div :class="[alertType == 'Success' ? 'bg-success' : 'bg-danger']" class="alertComp p-1" >
+        <p class="my-1"><span class="p-2"><i class="fa-solid" :class="[alertType == 'Success' ? 'fa-circle-check' : 'fa-circle-exclamation']"></i></span> {{alertText}}</p>
+    </div>
     </div>
     <router-view/>
 </template>
@@ -21,11 +23,6 @@
 
 <style scoped>
     .alertComp{
-        /* background-color: rgb(245, 68, 68); */
-        /* position: absolute; */
-        /* top: 30px;
-        left: 10px; */
-        padding: 5px;
         border-radius: 10px;
         color: white;
     }
