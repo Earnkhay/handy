@@ -24,12 +24,12 @@
                         
                             <div class="text-center mb-4 mainBtn">
                             <!-- <button type="submit" class="btn btn-primary" id="login" @click.prevent="submitAction()" >Log In</button> -->
-                            <btn-comp :btnType="btnType1" :text="text2" :btnColor="btnColor2"></btn-comp>
+                            <btn-comp :btnType="btnType1" :text="text2" :btnColor="btnColor2" @click.prevent="loginAction"></btn-comp>
                             </div>
                             </div>
 
                             <div class="mb-3">
-                            <btn-comp :btnType="btnType" :text="text" :btnColor="btnColor" class="googleBtn my-3"></btn-comp>
+                            <btn-comp :btnType="btnType" :text="text" :btnColor="btnColor" class="googleBtn my-3" @click.prevent="signInWithGoogle"></btn-comp>
                             <btn-comp :btnType="btnType" :text="text1" :btnColor="btnColor" class="fbBtn"></btn-comp>
                             </div>
 
@@ -55,6 +55,7 @@ import alert from '@/components/UI/alert.vue'
 import topNav from '@/components/topNav.vue'
 import btnComp from '@/components/UI/btnComp.vue'
 import axios from 'axios'
+import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
     @Options({
         components: {
             alert,
@@ -112,9 +113,63 @@ import axios from 'axios'
                         },3000)
                     }
                 }
-            submitAction(){
-                console.log('hi');
-                
+            loginAction(){
+                const auth = getAuth()
+                signInWithEmailAndPassword(auth, this.email, this.password)
+                    .then((res) => {
+                        console.log(res, "Successfully logged in");
+                        console.log(auth.currentUser);
+                        this.alertTitle = "Success !, You're Welcome"
+                        this.alertType = "Success"
+                        this.alertShow = true
+                        setTimeout(() => {  
+                                this.alertShow = false  
+                                this.$router.push('/about')    
+                        },3000) 
+                    })
+                    .catch((err) => {
+                        console.error(err)
+                        console.log(err.code);
+                        // this.alertTitle = err.code
+                        this.alertType = "danger"
+                        this.alertShow = true
+                        switch (err.code) {
+                            case "auth/invalid-email":
+                                this.alertTitle = "Invalid email";
+                                break;
+                            case "auth/user-not-found":
+                                this.alertTitle = "No Account with that email was found";
+                                break;
+                            case "auth/wrong-password":
+                                this.alertTitle = "Incorrect password";
+                                break;
+                            default:
+                                this.alertTitle = "Email or password was incorrect";
+                                break;
+                        }
+                        setTimeout(() => {         
+                                this.alertShow = false
+                                this.email = ''
+                                this.password = ''
+                        },3000) 
+                    });
+            }
+            signInWithGoogle(){
+                const provider = new GoogleAuthProvider();
+                signInWithPopup(getAuth(), provider)
+                    .then((res) => {
+                        console.log(res.user);
+                        this.alertTitle = "Success !, You're Welcome"
+                        this.alertType = "Success"
+                        this.alertShow = true
+                        setTimeout(() => {  
+                                this.alertShow = false  
+                                this.$router.push('/about')    
+                        },3000) 
+                    })
+                    .catch((err) => {
+                        console.log(err.code, "what's the err", err);
+                    })
             }
     }
 </script>

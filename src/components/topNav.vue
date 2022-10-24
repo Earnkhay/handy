@@ -8,10 +8,10 @@
     <div class="collapse navbar-collapse " id="navbarSupportedContent">
       <ul class="navbar-nav mb-2 mb-lg-0 ms-auto me-5" style="font-weight: bold;">
         <li class="nav-item">
-          <router-link class="nav-link px-3" active-class="text-primary" :to="{name: 'landingPage'}">Home</router-link>
+          <router-link class="nav-link px-3 link-dark" active-class="text-primary" :to="{name: 'landingPage'}">Home</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link px-3 link-dark" href="#">About</a>
+          <router-link class="nav-link px-3 link-dark" active-class="text-primary" :to="{name: 'about'}">About</router-link>
         </li>
         <li class="nav-item">
           <a class="nav-link px-3 link-dark" href="#">Pricing</a>
@@ -27,6 +27,9 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
+        <li class="nav-item logout">
+          <a class="nav-link px-3 link-dark" @click="logOutAction" v-if="isLoggedIn">logout</a>
+        </li>
       </ul>
 
         <router-link :to="{name: 'signup'}" class="text-decoration-none link-light btn me-2 px-4 py-2 bg-primary fs-5 navBtn">Get started</router-link>
@@ -36,20 +39,40 @@
 </template>
   
 <script lang="ts">
-  import { Options, Vue } from 'vue-class-component';
+  import { Options, Vue } from 'vue-class-component'
+  import { getAuth, onAuthStateChanged, signOut  } from '@firebase/auth';
+
+  let auth;
 
   @Options({
     components: {    
     },
   })
-  export default class topNav extends Vue {}
+  
+  export default class topNav extends Vue {
+    isLoggedIn = false
+    
+    mounted(){
+      auth = getAuth();
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          this.isLoggedIn = true;
+        } else {
+          this.isLoggedIn = false;
+        }
+      })
+    }
+    
+    logOutAction(){
+      auth = getAuth();
+      signOut(auth).then(() => {
+        this.$router.push("/")
+      })
+    }
+  }
 </script>
   
 <style scoped>
-/* button{
-  background-color: darkblue; 
-  font-size: 18px;
-} */
 
 .btn.navBtn:hover{
   color: red !important;
@@ -57,5 +80,9 @@
 
 .nav-link:hover{
   color: red !important;
+}
+
+.logout{
+  cursor: pointer;
 }
 </style>
