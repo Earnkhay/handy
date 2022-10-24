@@ -32,12 +32,12 @@
                                 </div>
                         
                             <div class="text-center mb-4 mainBtn">
-                            <btn-comp :btnType="btnType1" :text="text2" :btnColor="btnColor2"></btn-comp>
+                            <btn-comp :btnType="btnType1" :text="text2" :btnColor="btnColor2" @click.prevent="signUpAction"></btn-comp>
                             </div>
                             </div>
 
                             <div class="mb-3">
-                            <btn-comp :btnType="btnType" :text="text" :btnColor="btnColor" class="googleBtn my-3"></btn-comp>
+                            <btn-comp :btnType="btnType" :text="text" :btnColor="btnColor" class="googleBtn my-3" @click.prevent="signUpWithGoogle"></btn-comp>
                             <btn-comp :btnType="btnType" :text="text1" :btnColor="btnColor" class="fbBtn"></btn-comp>
                             </div>
 
@@ -60,6 +60,14 @@ import alert from '@/components/UI/alert.vue'
 import topNav from '@/components/topNav.vue'
 import btnComp from '@/components/UI/btnComp.vue'
 import axios from 'axios'
+// import * as firebase from "firebase/app"
+// import "firebase/auth"
+import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
+
+const auth = getAuth();
+const user = auth.currentUser;
+
+
     @Options({
         components: {
             alert,
@@ -128,7 +136,6 @@ import axios from 'axios'
                             () => {
                                 this.alertShow = false
                         },3000)
-                        
                     }else{
                         this.alertTitle = "Password should be at least 6 characters long, contain at least one uppercase & one digit"
                         this.alertType = "Danger"
@@ -139,6 +146,80 @@ import axios from 'axios'
                         },3000)
                     }
                 }
+            
+            async signUpAction(){
+                if(this.email != "" && this.password != '' && this.mailformat.test(this.email) && this.regPassword.test(this.password)){
+                    createUserWithEmailAndPassword(getAuth(), this.email, this.password)
+                    await axios.post('https://handy-2eb2b-default-rtdb.firebaseio.com/handy.json', {
+                        email: this.email,
+                        password: this.password
+                    })
+                    
+                    .then((res) => {
+                        console.log(res, "Successfully registered");
+                        this.alertTitle = "Success !, You're Welcome"
+                        this.alertType = "Success"
+                        this.alertShow = true
+                        setTimeout(() => {  
+                                this.alertShow = false  
+                                this.$router.push('/login')    
+                        },3000) 
+                    })
+                    .catch((err) => {
+                        console.error(err)
+                        console.log(err.code);
+                        // this.alertTitle = err.code
+                        this.alertType = "danger"
+                        this.alertShow = true
+                        switch (err.code) {
+                            case "auth/email-already-in-use":
+                                this.alertTitle = "Email already in use";
+                                break;
+                            default:
+                                this.alertTitle = "Account already exists";
+                                break;
+                        }
+                        setTimeout(() => {         
+                                this.alertShow = false
+                                this.email = ''
+                                this.password = ''
+                        },3000) 
+                    });
+                }else{
+                    this.alertTitle = "Error !, Please input Required details"
+                    this.alertType = "Danger"
+                    this.alertShow = true
+                    setTimeout(
+                        () => {
+                            this.alertShow = false
+                            this.email = ''
+                            this.password = ''
+                    },3000)
+                }
+            }
+
+            async signUpWithGoogle(){
+                let auth = getAuth();
+                const provider = new GoogleAuthProvider();
+                axios.post('https://handy-2eb2b-default-rtdb.firebaseio.com/handy.json', {
+                    auth,
+                    provider
+                })
+                signInWithPopup(getAuth(), provider)
+                    .then((res) => {
+                        console.log(res.user);
+                        this.alertTitle = "Success !, You're Welcome"
+                        this.alertType = "Success"
+                        this.alertShow = true
+                        setTimeout(() => {  
+                                this.alertShow = false  
+                                this.$router.push('/login')    
+                        },3000) 
+                    })
+                    .catch((err) => {
+                        console.log(err.code, "what's the err", err);
+                    })
+            }
     }
 </script>
 
@@ -187,5 +268,5 @@ h5 a:hover{
     margin-left: -30px; 
     margin-top: 10px;
 }
-
+    
 </style>
