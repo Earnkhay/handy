@@ -64,10 +64,6 @@ import axios from 'axios'
 // import "firebase/auth"
 import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
 
-const auth = getAuth();
-const user = auth.currentUser;
-
-
     @Options({
         components: {
             alert,
@@ -168,17 +164,17 @@ const user = auth.currentUser;
                     .catch((err) => {
                         console.error(err)
                         console.log(err.code);
-                        // this.alertTitle = err.code
+                        this.alertTitle = err.code
                         this.alertType = "danger"
                         this.alertShow = true
-                        switch (err.code) {
-                            case "auth/email-already-in-use":
-                                this.alertTitle = "Email already in use";
-                                break;
-                            default:
-                                this.alertTitle = "Account already exists";
-                                break;
-                        }
+                        // switch (err.code) {
+                        //     case "auth/email-already-in-use":
+                        //         this.alertTitle = "Email already in use";
+                        //         break;
+                        //     default:
+                        //         this.alertTitle = "Account already exists";
+                        //         break;
+                        // }
                         setTimeout(() => {         
                                 this.alertShow = false
                                 this.email = ''
