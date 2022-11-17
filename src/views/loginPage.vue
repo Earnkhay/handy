@@ -42,7 +42,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6 d-none d-sm-block login-image">
+            <div class="col-md-6 login-image">
                 <img src="../assets/loginimage.png" alt="">
             </div>
         </div>
@@ -54,7 +54,7 @@ import {Options, Vue} from "vue-class-component"
 import alert from '@/components/UI/alert.vue'
 import topNav from '@/components/topNav.vue'
 import btnComp from '@/components/UI/btnComp.vue'
-import axios from 'axios'
+// import axios from 'axios'
 import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
     @Options({
         components: {
@@ -243,6 +243,9 @@ h5 a:hover{
 
     h5{
         font-size: 1rem;
+    }
+    .login-image img{
+        display: none;
     }
 } 
 </style>
