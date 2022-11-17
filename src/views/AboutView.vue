@@ -2,36 +2,42 @@
   <top-nav></top-nav>
   <div class="about">
     <h1>This is an about page</h1>
-    <!-- <p>{{ details }}</p> -->
+    <p>{{ name }} </p>
+    <p>{{ email }} </p>
 
   </div>
 </template>
 
-<script lang="ts">
+<script >
   import { Options, Vue } from 'vue-class-component';
   import topNav from '@/components/topNav.vue';
   import { getAuth } from "firebase/auth";
 
   const auth = getAuth();
   const user = auth.currentUser;
-  
+
   @Options({
     components: {
       topNav,
     },
+    props: {
+      details: String,
+    }
   })
   export default class about extends Vue {
+    name = "User"
+    email = ""
     
     mounted(){
       if (user !== null) {
-        const displayName = user.displayName;
-        const email = user.email;
+        this.name = user.displayName;
+        this.email = user.email;
         // const photoURL = user.photoURL;
         const emailVerified = user.emailVerified;
 
-        console.log(displayName, email, emailVerified, 'trying to get username');
+        console.log( this.name, this.email, emailVerified, 'trying to get username');
 
-        const uid = user.uid;
+        // const uid = user.uid;
       }
 
     }
