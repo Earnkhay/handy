@@ -49,12 +49,6 @@ import { Options, Vue } from "vue-class-component";
         id: 7,
         text: "Logout",
       },
-
-      //   {
-      //     id: 4,
-      //     icon: "fa-file",
-      //     text: "Reports",
-      //   },
     ];
   },
 })
@@ -66,6 +60,7 @@ export default class Sidebar extends Vue {}
   background-color: #fff;
   color: #000;
   height: 100vh;
+  overflow: hidden;
 }
 
 .sidebar-wrapper {
@@ -84,5 +79,11 @@ li {
 
 li.active {
   background-color: black;
+}
+
+@media (min-width: 320px) {
+  .sidebar-container {
+    /* width: 2rem; */
+  }
 }
 </style>
