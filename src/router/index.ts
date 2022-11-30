@@ -3,6 +3,7 @@ import landingPage from "@/views/landingPage.vue";
 import notFoundPage from "@/views/notFoundPage.vue";
 import login from "@/views/loginPage.vue";
 import signup from "@/views/signUp.vue";
+// import Dashboard from "@/views/dashboard1.vue";
 import Dashboard from "@/views/dashboard.vue";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 

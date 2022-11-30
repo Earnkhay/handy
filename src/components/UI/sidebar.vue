@@ -54,13 +54,13 @@ import { Options, Vue } from "vue-class-component";
 })
 export default class Sidebar extends Vue {}
 </script>
-<style>
+<style scoped>
 .sidebar-container {
   width: 100%;
-  background-color: #fff;
-  color: #000;
-  height: 100vh;
-  overflow: hidden;
+  /* background-color: #fff; */
+  /* color: #fff; */
+  /* height: 100vh;
+  overflow: hidden; */
 }
 
 .sidebar-wrapper {
