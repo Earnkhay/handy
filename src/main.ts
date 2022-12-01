@@ -1,20 +1,20 @@
-import { createApp } from "vue"
-import App from "./App.vue"
-import router from "./router"
-import store from "./store"
-import "../node_modules/bootstrap/dist/css/bootstrap.css"
-import "../node_modules/bootstrap/dist/js/bootstrap.js"
-import "@fortawesome/fontawesome-free/css/all.css"
-import axios from "axios"
-import VueAxios from "vue-axios"
+import { createApp } from "vue";
+import App from "./App.vue";
+import router from "./router";
+import store from "./store";
+import "../node_modules/bootstrap/dist/css/bootstrap.css";
+import "../node_modules/bootstrap/dist/js/bootstrap.js";
+import "@fortawesome/fontawesome-free/css/all.css";
+import axios from "axios";
+import VueAxios from "vue-axios";
 // import firebase from 'firebase/app'
-import { initializeApp } from "firebase/app"
-import VueApexCharts from "vue3-apexcharts"
+import { initializeApp } from "firebase/app";
+import VueApexCharts from "vue3-apexcharts";
 
-const app = createApp(App)
-app.use(VueAxios, axios)
-app.use(VueApexCharts)
-app.provide("axios", app.config.globalProperties.axios)
+const app = createApp(App);
+app.use(VueAxios, axios);
+app.use(VueApexCharts);
+app.provide("axios", app.config.globalProperties.axios);
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -29,4 +29,4 @@ const firebaseConfig = {
 // Initialize Firebase
 initializeApp(firebaseConfig);
 
-createApp(App).use(store).use(router).mount("#app")
+createApp(App).use(store).use(router).mount("#app");

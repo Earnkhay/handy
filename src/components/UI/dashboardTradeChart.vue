@@ -3,7 +3,7 @@
     <div class="card-body d-flex justify-content-between">
       <div class="card-txt">
         <h5 class="card-title mx-3">
-          <doughnutChart />
+          <doughnutTradeChart />
         </h5>
         <p class="card-text w-50 fw-bold title-color">{{ title }}</p>
       </div>
@@ -16,17 +16,17 @@
 
 <script>
 import { Options, Vue } from "vue-class-component";
-import doughnutChart from "../UI/doughnutChart";
+import doughnutTradeChart from "../UI/doughnutTradeChart.vue";
 
 @Options({
   components: {
-    doughnutChart,
+    doughnutTradeChart,
   },
   props: {
     title: String,
   },
 })
-export default class featuresCard extends Vue {}
+export default class dashboardTradeChart extends Vue {}
 </script>
 
 <style scoped>
