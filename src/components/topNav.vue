@@ -28,11 +28,11 @@
           </ul>
         </li>
         <li class="nav-item logout">
-          <a class="nav-link px-3 link-dark" @click="logOutAction" v-if="isLoggedIn">logout</a>
+          <a class="text-decoration-none link-light btn ms-3 px-4 py-2 bg-primary fs-5 navBtn" @click="logOutAction" v-if="isLoggedIn">Logout</a>
         </li>
       </ul>
 
-        <router-link :to="{name: 'signup'}" class="text-decoration-none link-light btn me-2 px-4 py-2 bg-primary fs-5 navBtn">Get started</router-link>
+        <router-link :to="{name: 'signup'}" v-if="(isLoggedIn == false)" class="text-decoration-none link-light btn me-2 px-4 py-2 bg-primary fs-5 navBtn">Get started</router-link>
     </div>
   </div>
   </nav>
@@ -66,7 +66,7 @@
     logOutAction(){
       auth = getAuth();
       signOut(auth).then(() => {
-        this.$router.push("/")
+        this.$router.push("/login")
       })
     }
   }
@@ -75,10 +75,6 @@
 <style scoped>
 
 .btn.navBtn:hover{
-  color: red !important;
-}
-
-.nav-link:hover{
   color: red !important;
 }
 

@@ -81,9 +81,9 @@ li.active {
   background-color: black;
 }
 
-@media (min-width: 320px) {
+/* @media (min-width: 320px) {
   .sidebar-container {
-    /* width: 2rem; */
+    width: 2rem;
   }
-}
+} */
 </style>

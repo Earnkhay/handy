@@ -124,7 +124,7 @@ import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopu
                         this.alertShow = true
                         setTimeout(() => {  
                                 this.alertShow = false  
-                                this.$router.push('/about')    
+                                this.$router.push('/dashboard')    
                         },3000) 
                     })
                     .catch((err) => {
@@ -164,7 +164,7 @@ import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopu
                         this.alertShow = true
                         setTimeout(() => {  
                                 this.alertShow = false  
-                                this.$router.push('/about')    
+                                this.$router.push('/dashboard')    
                         },3000) 
                     })
                     .catch((err) => {
