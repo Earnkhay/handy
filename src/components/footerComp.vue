@@ -1,18 +1,19 @@
 <template>
   <section class="">
-    <div class="container text-center text-md-start mt-5">
+    <div class="container text-center text-md-start mt-2">
       <div class="row mt-3">
         <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-          <h6 class="text-uppercase fw-bold mb-4">
-            <i class="fas fa-gem me-3"></i>
-          </h6>
-
+          <img
+            src="../assets/handylogo.png"
+            class="img-responsive"
+            alt="logo"
+          />
           <p>Join our newsletter to stay up to date on features and releases</p>
           <form class="form-inline">
             <div class="form-group mb-2">
               <label for="staticEmail2" class="sr-only">Email</label>
             </div>
-            <div class="form-group mx-sm-3 mb-1">
+            <div class="col-sm-8">
               <label for="inputemail" class="sr-only">Enter your email</label>
               <input
                 type="email"
@@ -33,7 +34,7 @@
         </div>
 
         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-          <h6 class="text-uppercase fw-bold mb-4">Handy</h6>
+          <h6 class="fw-bold mb-4 fs-4 text-primary">Handy</h6>
           <p>
             <a href="#!" class="text-reset">Download</a>
           </p>
@@ -52,7 +53,7 @@
         </div>
 
         <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-          <h6 class="text-uppercase fw-bold mb-4">features</h6>
+          <h6 class="fw-bold mb-4 fs-4 text-primary">Features</h6>
           <p>
             <a href="#!" class="text-reset">Dashboard</a>
           </p>
@@ -67,26 +68,26 @@
           </p>
         </div>
 
-        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-          <h6 class="fw-bold mb-4">FOLLOW US</h6>
-          <div>
-            <a href="#" class="me-4 text-reset">
-              <i class="fab fa-facebook-f"> Facebook</i>
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <h6 class="fw-bold mb-4 fs-4 text-primary">Follow Us</h6>
+          <div class="text-lowercase">
+            <a href="#" class="text-reset">
+              <i class="fab fa-facebook-f mb-4"> Facebook</i>
             </a>
-            <a href="#" class="me-4 text-reset">
-              <i class="fab fa-twitter"> Twiiter</i>
+            <a href="#" class="text-reset">
+              <i class="fab fa-twitter mb-4"> Twiter</i>
             </a>
-            <a href="#" class="me-4 text-reset">
-              <i class="fab fa-instagram"> Instagram</i>
+            <a href="#" class="text-reset">
+              <i class="fab fa-instagram mb-4"> Instagram</i>
             </a>
-            <a href="#" class="me-4 text-reset">
-              <i class="fab fa-linkedin"> LinkedIn</i>
+            <a href="#" class="text-reset">
+              <i class="fab fa-linkedin mb-4"> LinkedIn</i>
             </a>
           </div>
         </div>
       </div>
     </div>
-    <div class="text-left p-4">2022 Handy. All rights reserved.</div>
+    <div class="p-4">2022 Handy. All rights reserved.</div>
   </section>
 </template>
 
@@ -95,7 +96,6 @@ import { Options, Vue } from "vue-class-component";
 
 @Options({
   components: {},
-  
 })
 export default class footerComp extends Vue {}
 </script>

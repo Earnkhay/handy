@@ -3,6 +3,7 @@
     <benefits />
     <features/>
     <testimonial/>
+    <joinUs/>
     <footer-comp/>
 </template>
   
@@ -12,6 +13,7 @@
   import testimonial from '@/components/testimonial.vue'
   import benefits from '@/components/benefits.vue'
   import features from '@/components/features.vue'
+  import joinUs from '@/components/joinUs.vue';
   import footerComp from '@/components/footerComp.vue'
  
 
@@ -21,6 +23,7 @@
       testimonial,
       benefits,
       features,
+      joinUs,
       footerComp
     },
   })
