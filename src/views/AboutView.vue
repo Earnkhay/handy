@@ -6,12 +6,17 @@
     <p>{{ email }} </p>
 
   </div>
+  <div>
+  <!-- <apexchart width="500" type="bar" :options="options" :series="series"></apexchart> -->
+  <vue-apex-charts width="500" type="bar" :options="options" :series="series"></vue-apex-charts>
+</div>
 </template>
 
 <script >
   import { Options, Vue } from 'vue-class-component';
   import topNav from '@/components/topNav.vue';
   import { getAuth } from "firebase/auth";
+  import VueApexCharts from "vue3-apexcharts"
 
   const auth = getAuth();
   const user = auth.currentUser;
@@ -19,6 +24,7 @@
   @Options({
     components: {
       topNav,
+      VueApexCharts
     },
     props: {
       details: String,
@@ -41,5 +47,18 @@
       }
 
     }
+
+    options = {
+        chart: {
+          id: 'vuechart-example'
+        },
+        xaxis: {
+          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+        }
+      }
+      series = [{
+        name: 'series-1',
+        data: [30, 40, 45, 50, 49, 60, 70, 91]
+      }]
   }
 </script>
